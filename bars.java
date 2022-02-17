@@ -10,7 +10,7 @@ public class bars extends JPanel {
     static ArrayList<Integer> valuesList = new ArrayList<>();
 
     bars(){
-        this.setBounds(50,50, 1100,300);
+        this.setBounds(15,25, 1150,400);
         this.setLayout(new GridLayout(1,100));
         for(int i=1; i<=100; i++){
             valuesList.add(i);
@@ -28,6 +28,9 @@ public class bars extends JPanel {
         singleBar(int value){
             this.setValue(value);
             this.setOrientation(JProgressBar.VERTICAL);
+            this.setForeground(Color.CYAN);
+            this.setBorder(null);
+            this.setMaximum(100);
         }
     }
 }

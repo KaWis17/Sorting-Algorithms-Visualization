@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.util.Collections;
 
 public class menuBar extends JMenuBar{
+    static int nrSort;
     menuBar(){
         JMenu chooseAlg = new JMenu("Choose sorting algorithm");
         JMenuItem quickSort = new JMenuItem("QuickSort");
@@ -37,6 +38,7 @@ public class menuBar extends JMenuBar{
         aboutAlg.descAver.changeText("Average: Θ(n log(n))");
         aboutAlg.descBest.changeText("Best: Ω(n log(n))");
         shuffle();
+
     }
 
     private void setBubbleSort(){
@@ -45,6 +47,7 @@ public class menuBar extends JMenuBar{
         aboutAlg.descAver.changeText("Average: Θ(n^2)");
         aboutAlg.descBest.changeText("Best: Ω(n)");
         shuffle();
+        nrSort=2;
     }
 
     private void setMergeSort(){
