@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class bodyAlg extends JPanel {
-    static JLabel description1 = new JLabel("Number of swaps: ");
-    static JLabel description2 = new JLabel("Number of comparisons: ");
+    static JLabel description1 = new JLabel("Number of swaps: 0");
+    static JLabel description2 = new JLabel("Number of comparisons: 0");
     static JButton start = new JButton("Start");
 
     bodyAlg(){
@@ -19,11 +19,6 @@ public class bodyAlg extends JPanel {
         this.add(start);
         start.addActionListener(e -> runSort());
 
-        JButton stop = new JButton("Stop");
-        stop.setBounds(250,450,200,100);
-        stop.setFocusable(false);
-        this.add(stop);
-
         description1.setBounds(500, 450, 250, 100);
         description1.setFont(new Font("Arial", Font.ITALIC, 15));
         description1.setForeground(Color.BLACK);
@@ -36,10 +31,37 @@ public class bodyAlg extends JPanel {
     }
 
     public void runSort(){
-        if(menuBar.nrSort == 2){
-            new bubbleSortAlg().start();
-            start.setEnabled(false);
+        description1.setText("Number of swaps: 0");
+        description2.setText("Number of comparisons: 0");
+        if(menuBar.nrSort == 1){
+            disableChange();
+            new quickSortAlg().start();
         }
+        else if(menuBar.nrSort == 2){
+            disableChange();
+            new bubbleSortAlg().start();
+        }
+        else if(menuBar.nrSort == 3){
+            disableChange();
+            //new mergeSortAlg().start();
+        }
+
+    }
+
+    private void disableChange(){
+        start.setEnabled(false);
+        menuBar.quickSort.setEnabled(false);
+        menuBar.bubbleSort.setEnabled(false);
+        menuBar.mergeSort.setEnabled(false);
+        menuBar.iReset.setEnabled(false);
+    }
+
+    public static void enableChange(){
+        start.setEnabled(true);
+        menuBar.quickSort.setEnabled(true);
+        menuBar.bubbleSort.setEnabled(true);
+        menuBar.mergeSort.setEnabled(true);
+        menuBar.iReset.setEnabled(true);
     }
 
 

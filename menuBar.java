@@ -1,19 +1,22 @@
 package com.company;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Collections;
 
 public class menuBar extends JMenuBar{
     static int nrSort;
+    static JMenuItem quickSort = new JMenuItem("QuickSort");
+    static JMenuItem bubbleSort = new JMenuItem("BubbleSort");
+    static JMenuItem mergeSort = new JMenuItem("MergeSort");
+    static JMenuItem iReset = new JMenuItem("Reset");
+
     menuBar(){
         JMenu chooseAlg = new JMenu("Choose sorting algorithm");
-        JMenuItem quickSort = new JMenuItem("QuickSort");
-        JMenuItem bubbleSort = new JMenuItem("BubbleSort");
-        JMenuItem mergeSort = new JMenuItem("MergeSort");
         JMenu reset = new JMenu("Reset");
-        JMenuItem iReset = new JMenuItem("Reset");
         JMenu help = new JMenu("Help");
         JMenuItem iHelp = new JMenuItem("Help");
+
 
         quickSort.addActionListener(e -> setQuickSort());
         bubbleSort.addActionListener(e -> setBubbleSort());
@@ -33,35 +36,37 @@ public class menuBar extends JMenuBar{
 
 
     private void setQuickSort(){
-        aboutAlg.title.setText("QuickSort");
-        aboutAlg.descWorst.changeText("Worst: O(n^2)");
-        aboutAlg.descAver.changeText("Average: Θ(n log(n))");
-        aboutAlg.descBest.changeText("Best: Ω(n log(n))");
-        shuffle();
-
+            aboutAlg.title.setText("QuickSort");
+            aboutAlg.descWorst.changeText("Worst: O(n^2)");
+            aboutAlg.descAver.changeText("Average: Θ(n log(n))");
+            aboutAlg.descBest.changeText("Best: Ω(n log(n))");
+            shuffle();
+            nrSort = 1;
     }
 
     private void setBubbleSort(){
-        aboutAlg.title.setText("BubbleSort");
-        aboutAlg.descWorst.changeText("Worst: O(n^2)");
-        aboutAlg.descAver.changeText("Average: Θ(n^2)");
-        aboutAlg.descBest.changeText("Best: Ω(n)");
-        shuffle();
-        nrSort=2;
+            aboutAlg.title.setText("BubbleSort");
+            aboutAlg.descWorst.changeText("Worst: O(n^2)");
+            aboutAlg.descAver.changeText("Average: Θ(n^2)");
+            aboutAlg.descBest.changeText("Best: Ω(n)");
+            shuffle();
+            nrSort = 2;
     }
 
     private void setMergeSort(){
-        aboutAlg.title.setText("MergeSort");
-        aboutAlg.descWorst.changeText("Worst: O(n log(n))");
-        aboutAlg.descAver.changeText("Average: Θ(n log(n))");
-        aboutAlg.descBest.changeText("Best: Ω(n log(n))");
-        shuffle();
+            aboutAlg.title.setText("MergeSort");
+            aboutAlg.descWorst.changeText("Worst: O(n log(n))");
+            aboutAlg.descAver.changeText("Average: Θ(n log(n))");
+            aboutAlg.descBest.changeText("Best: Ω(n log(n))");
+            shuffle();
+            nrSort = 3;
     }
 
     private void shuffle(){
         Collections.shuffle(bars.valuesList);
         for(int i=0; i<100; i++){
             bars.barsList.get(i).setValue(bars.valuesList.get(i));
+            bars.barsList.get(i).setForeground(Color.CYAN);
         }
     }
     private void placeholder(){

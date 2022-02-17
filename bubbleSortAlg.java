@@ -10,13 +10,14 @@ public class bubbleSortAlg extends Thread {
         boolean isSwapped;
         int swapCounter = 0;
         int comparisonCounter = 0;
-        for (int i = 0; i < bars.valuesList.size() - 1; i++) {
+        int length = bars.valuesList.size();
+        for (int i = 0; i < length - 1; i++) {
             isSwapped = false;
-            for (int j = 0; j < bars.valuesList.size() - i - 1; j++) {
+            for (int j = 0; j < length - i - 1; j++) {
                 bars.barsList.get(j).setForeground(Color.RED);
                 bars.barsList.get(j + 1).setForeground(Color.RED);
                 try {
-                    Thread.sleep(3);
+                    Thread.sleep(2);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -35,10 +36,17 @@ public class bubbleSortAlg extends Thread {
                 bodyAlg.description2.setText("Number of comparisons: "+comparisonCounter);
             }
             if (!isSwapped) {
-                bodyAlg.start.setEnabled(true);
                 break;
             }
         }
-        bodyAlg.start.setEnabled(true);
+        for(int i=0; i<bars.valuesList.size(); i++){
+            bars.barsList.get(i).setForeground(Color.green);
+            try {
+                Thread.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        bodyAlg.enableChange();
     }
 }
