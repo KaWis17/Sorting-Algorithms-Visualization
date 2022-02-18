@@ -17,7 +17,7 @@ public class bubbleSortAlg extends Thread {
                 bars.barsList.get(j).setForeground(Color.RED);
                 bars.barsList.get(j + 1).setForeground(Color.RED);
                 try {
-                    Thread.sleep(2);
+                    Thread.sleep(bars.sortingSpeed);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -39,14 +39,6 @@ public class bubbleSortAlg extends Thread {
                 break;
             }
         }
-        for(int i=0; i<bars.valuesList.size(); i++){
-            bars.barsList.get(i).setForeground(Color.green);
-            try {
-                Thread.sleep(5);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        bodyAlg.enableChange();
+        new sortedAnimation().start();
     }
 }

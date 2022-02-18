@@ -4,11 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class aboutAlg extends JPanel {
-    static JLabel title = new JLabel("SomeSort");
+    static JLabel title = new JLabel("QuickSort");
     static JPanel description = new JPanel();
-    static descLabel descWorst = new descLabel("Worst something");
-    static descLabel descAver = new descLabel("Average something");
-    static descLabel descBest = new descLabel("Best something");
+    static descLabel descWorst = new descLabel("Worst: O(n^2)");
+    static descLabel descAver = new descLabel("Average: Θ(n log(n))");
+    static descLabel descBest = new descLabel("Best: Ω(n log(n))");
 
     aboutAlg(){
         title.setHorizontalAlignment(JLabel.CENTER);

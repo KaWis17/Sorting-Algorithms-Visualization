@@ -7,6 +7,8 @@ public class bodyAlg extends JPanel {
     static JLabel description1 = new JLabel("Number of swaps: 0");
     static JLabel description2 = new JLabel("Number of comparisons: 0");
     static JButton start = new JButton("Start");
+    static JButton stop = new JButton("Stop");
+
 
     bodyAlg(){
         this.setBounds(0,150,1200,650);
@@ -19,6 +21,11 @@ public class bodyAlg extends JPanel {
         this.add(start);
         start.addActionListener(e -> runSort());
 
+        stop.setBounds(250, 450, 200, 100);
+        stop.setFocusable(false);
+        this.add(stop);
+        stop.addActionListener(e -> setStop());
+
         description1.setBounds(500, 450, 250, 100);
         description1.setFont(new Font("Arial", Font.ITALIC, 15));
         description1.setForeground(Color.BLACK);
@@ -30,39 +37,25 @@ public class bodyAlg extends JPanel {
 
     }
 
-    public void runSort(){
+    private void runSort(){
         description1.setText("Number of swaps: 0");
         description2.setText("Number of comparisons: 0");
         if(menuBar.nrSort == 1){
-            disableChange();
+            menuBar.disableChange();
             new quickSortAlg().start();
         }
         else if(menuBar.nrSort == 2){
-            disableChange();
+            menuBar.disableChange();
             new bubbleSortAlg().start();
         }
         else if(menuBar.nrSort == 3){
-            disableChange();
-            //new mergeSortAlg().start();
+            menuBar.disableChange();
+            new mergeSortAlg().start();
         }
-
     }
 
-    private void disableChange(){
-        start.setEnabled(false);
-        menuBar.quickSort.setEnabled(false);
-        menuBar.bubbleSort.setEnabled(false);
-        menuBar.mergeSort.setEnabled(false);
-        menuBar.iReset.setEnabled(false);
+    private void setStop(){
+        JOptionPane.showMessageDialog(null, "Work in progress...");
     }
-
-    public static void enableChange(){
-        start.setEnabled(true);
-        menuBar.quickSort.setEnabled(true);
-        menuBar.bubbleSort.setEnabled(true);
-        menuBar.mergeSort.setEnabled(true);
-        menuBar.iReset.setEnabled(true);
-    }
-
 
 }

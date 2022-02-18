@@ -13,19 +13,11 @@ public class quickSortAlg extends Thread{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        for(int i=0; i<bars.valuesList.size(); i++){
-            bars.barsList.get(i).setForeground(Color.green);
-            try {
-                Thread.sleep(5);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        bodyAlg.enableChange();
+        new sortedAnimation().start();
     }
 
 
-     void sorting(int first, int last) throws InterruptedException {
+     private void sorting(int first, int last) throws InterruptedException {
         if(first<last){
             int pivot = listPartition(first, last);
             sorting(first, pivot-1);
@@ -34,7 +26,7 @@ public class quickSortAlg extends Thread{
     }
 
 
-    int listPartition(int first, int last) throws InterruptedException {
+    private int listPartition(int first, int last) throws InterruptedException {
         int pivotIndex = ((first+last)/2);
         Collections.swap(bars.valuesList, pivotIndex, last);
         bars.barsList.get(pivotIndex).setValue(bars.valuesList.get(pivotIndex));
@@ -46,7 +38,7 @@ public class quickSortAlg extends Thread{
             bodyAlg.description2.setText("Number of comparisons: "+comparisonCounter);
             bars.barsList.get(a).setForeground(Color.RED);
             bars.barsList.get(b).setForeground(Color.RED);
-            Thread.sleep(2);
+            Thread.sleep(bars.sortingSpeed);
             bars.barsList.get(a).setForeground(Color.CYAN);
             bars.barsList.get(b).setForeground(Color.CYAN);
 
